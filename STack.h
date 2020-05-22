@@ -17,9 +17,9 @@ public:
     void push(item_type& r)
     {
         if(amt_items==0)
-            tail = new node(r, nullptr);
+            tail = new node{r, nullptr};
         else
-            tail = new node(r,tail);
+            tail = new node{r,tail};
         amt_items+=1;
     };
     item_type pop()
@@ -35,7 +35,10 @@ public:
     {
         return tail->item;
     }
-    int length();
+    int length()
+    {
+        return amt_items;
+    };
     bool empty(){
         return amt_items!=0;
     };
