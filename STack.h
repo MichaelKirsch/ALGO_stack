@@ -13,8 +13,17 @@ class Stack
     int amt_items=0;
 public:
     Stack(){};
-    ~Stack(){};
-    void push(item_type& r)
+    Stack(const Stack&s)
+    {
+        clear();
+        while (s.amt_items>0)
+            push(s.pop());
+    }
+    ~Stack(){
+        clear();
+        delete tail;
+    };
+    void push(item_type r)
     {
         if(amt_items==0)
             tail = new node{r, nullptr};
@@ -24,12 +33,15 @@ public:
     };
     item_type pop()
     {
+        if(empty())
+            throw std::runtime_error("stack underflow");
         item_type to_return = tail->item;
         auto* b = tail->next;
-        delete [] tail;
+        delete tail;
         tail = b;
         amt_items--;
         return to_return;
+
     }
     item_type top()
     {
@@ -44,7 +56,7 @@ public:
     };
     void clear()
     {
-        while(tail->next!= nullptr)
+        while(amt_items!=0)
             pop();
     }
 };
