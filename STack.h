@@ -20,7 +20,7 @@ public:
             tail = new node{r, nullptr};
         else
             tail = new node{r,tail};
-        amt_items+=1;
+        amt_items++;
     };
     item_type pop()
     {
@@ -28,7 +28,7 @@ public:
         auto* b = tail->next;
         delete [] tail;
         tail = b;
-        amt_items-=1;
+        amt_items--;
         return to_return;
     }
     item_type top()
@@ -40,7 +40,7 @@ public:
         return amt_items;
     };
     bool empty(){
-        return amt_items!=0;
+        return amt_items==0;
     };
     void clear()
     {
