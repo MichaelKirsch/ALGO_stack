@@ -23,6 +23,7 @@ public:
         clear();
         delete tail;
     };
+
     void push(item_type r)
     {
         if(amt_items==0)
